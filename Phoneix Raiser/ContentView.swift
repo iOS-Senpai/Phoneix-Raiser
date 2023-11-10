@@ -6,15 +6,23 @@
 //
 
 import SwiftUI
+import AppCenter
+import AppCenterCrashes
+import AppCenterAnalytics
 
 struct ContentView: View {
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            Button {
+                exit(0)
+            } label: {
+                Text("Simulate Crash")
+            }
         }
+        .onAppear {
+            Analytics.trackEvent("Phoneix_Raiser_onLaunch")
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding()
     }
 }
